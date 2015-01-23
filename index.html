@@ -3,25 +3,29 @@
   <title>
     Calculator App
   </title>
+  <script src = "js/lib/require.js" data-main="js/main">
+  </script>
 </head>
 <body>
   <table border="4">
     <tbody>
       <tr>
         <td id="output">
-          <input type="text" size="16">
+          <input id="theBox" type="text" size="16">
           <br>
+          <!--Buffer for transient operations-->
+          <input id="buffer" type="hidden">
         </td>
       </tr>
 
       <tr>
         <td id="input">
           <input type="button" id="one" value="1">
-          <input type="button" id="two" value="2" >
-          <input type="button" id="three" value="3" >
+          <input type="button" id="two" value="2">
+          <input type="button" id="three" value="3">
           <input type="button" id="plus" value="+">
           <br>
-          <input type="button" id="four" value="4" >
+          <input type="button" id="four" value="4">
           <input type="button" id="five" value="5" >
           <input type="button" id="six" value="6" >
           <input type="button" id="minus" value="-">
