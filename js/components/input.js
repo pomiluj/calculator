@@ -29,13 +29,19 @@ define(['jquery', 'flight'], function($, flight){
       //console.log(number);
     };
 
-    this.anotherFunction = function(e,d){
-      console.log(d);
-    };
-
     this.operator = function(e,d){
       var symbol = $(e.target).val();
       this.trigger(document, 'addOperation', { op: symbol });
+    }
+
+    this.clear = function(e,d){
+      //notice the third parameter is absent
+      //this is because no data needs to be sent
+      this.trigger(document, 'clear');
+    };
+
+    this.doIt = function(e,d){
+      this.trigger(document, 'doIt');
     }
 
     this.after('initialize', function(){
@@ -53,8 +59,8 @@ define(['jquery', 'flight'], function($, flight){
       this.on(this.select('minus'), 'click', this.operator);
       this.on(this.select('times'), 'click', this.operator);
       this.on(this.select('div'), 'click', this.operator);
-      // this.on(this.select('DoIt'), 'click', this.doIt);
-      // this.on(this.select('clear'), 'click', this.clear);
+      this.on(this.select('DoIt'), 'click', this.doIt);
+      this.on(this.select('clear'), 'click', this.clear);
     });
   });
 

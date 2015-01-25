@@ -8,8 +8,9 @@ require.config({
     jquery: 'lib/jquery.min',
     //Components
     input: 'components/input',
-    output: 'components/output'
+    output: 'components/output',
     //Mixins
+    withMaths: 'mixins/withMaths'
     //Plugins
   }
 });
