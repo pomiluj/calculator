@@ -5,7 +5,8 @@ define(['jquery', 'flight', 'withMaths'], function($, flight, withMaths){
 
     this.attributes({
       theBox: '#theBox',
-      buffer: '#buffer'
+      buffer: '#buffer',
+      last: '#lastClicked'
     });
 
     this.clear = function(e,d){//since no data was sent by the original call in input.js, 'd' is undefined in this function scope
@@ -31,6 +32,9 @@ define(['jquery', 'flight', 'withMaths'], function($, flight, withMaths){
         $(this.attr.buffer).val('');
         $(this.attr.theBox).val(result);
       }
+
+      //update lastclicked
+      $(this.attr.last).val('operator');
     };
 
     //adds numbers to output in a smart way
@@ -43,12 +47,13 @@ define(['jquery', 'flight', 'withMaths'], function($, flight, withMaths){
       //watch this for more info, https://www.youtube.com/watch?v=SX-AnIVZJLc
       var bufferAtCapacity = currentBuffer.match(/\|/i) !== null;//returns boolean
 
-      if(parseInt(currentOutput) > 0 && bufferAtCapacity === true){
-        console.log('control flow reached');
-        //slight tricky issue here, ill deal with it later, drinky time now
-      }
-
+      //if the last input clicked was an operator then clobber theBox's current value
+      if($(this.attr.last).val() === 'operator') $(this.attr.theBox).val(d.number);
+      //otherwise simply concat them
       else $(this.attr.theBox).val(currentOutput+""+d.number);
+
+      //update lastclicked
+      $(this.attr.last).val('number');
       //console.log('number received!');
       //console.log(d);
     };
@@ -81,6 +86,8 @@ define(['jquery', 'flight', 'withMaths'], function($, flight, withMaths){
         $(this.attr.buffer).val(result+'|'+d.op);
         $(this.attr.theBox).val(result);
       }
+      //update lastclicked
+      $(this.attr.last).val('operator');
     };
 
     this.after('initialize', function(){

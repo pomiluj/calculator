@@ -18,7 +18,6 @@ require.config({
 //Primary Init
 requirejs(['jquery', 'flight', 'input', 'output'],
 function(   $,        flight,   input,   output){
-
   //Attach Flight Components to DOM
   input.attachTo('#input');
   output.attachTo('#output');
