@@ -8,8 +8,9 @@ require.config({
     jquery: 'lib/jquery.min',
     //Components
     input: 'components/input',
-    output: 'components/output'
+    output: 'components/output',
     //Mixins
+    withMaths: 'mixins/withMaths'
     //Plugins
   }
 });
@@ -17,7 +18,6 @@ require.config({
 //Primary Init
 requirejs(['jquery', 'flight', 'input', 'output'],
 function(   $,        flight,   input,   output){
-
   //Attach Flight Components to DOM
   input.attachTo('#input');
   output.attachTo('#output');

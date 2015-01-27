@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/pomiluj/calculator",
   "dependencies": {
+    "amd-optimize": "^0.4.3",
     "gulp": "^3.8.10",
     "gulp-concat": "^2.4.3",
     "gulp-download": "0.0.1"
